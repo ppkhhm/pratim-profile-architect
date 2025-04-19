@@ -1,4 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -25,6 +27,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+    --accent-purple: 250 95% 65%;
+    --accent-teal: 180 70% 45%;
   }
 }
 
@@ -35,22 +39,46 @@
   body {
     @apply bg-background text-foreground font-inter;
   }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
 }
 
 .skill-tag {
-  @apply px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium;
+  @apply px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium transition-all duration-300 hover:bg-primary/20 hover:text-primary cursor-default flex items-center gap-1.5;
 }
 
 .project-card {
-  @apply p-6 rounded-lg bg-card border border-border transition-all duration-300 hover:border-primary/50;
+  @apply p-6 rounded-lg bg-card border border-border transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5;
+}
+
+.cert-card {
+  @apply p-6 rounded-lg bg-card border border-border transition-all duration-300 hover:border-primary/30 flex flex-col h-full;
 }
 
 .section-title {
-  @apply text-2xl font-bold mb-6 text-primary;
+  @apply text-3xl font-bold mb-8 text-primary relative inline-block after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-primary/30 after:bottom-0 after:left-0 pb-3;
 }
 
 .animate-in {
   animation: fadeIn 0.5s ease-out;
+}
+
+.section-container {
+  @apply max-w-6xl mx-auto px-6 py-24;
+}
+
+.bg-gradient-subtle {
+  @apply bg-gradient-to-br from-background via-background to-secondary/20;
+}
+
+.bg-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+  background-size: 30px 30px;
+}
+
+.section-divider {
+  @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-4;
 }
 
 @keyframes fadeIn {
@@ -62,4 +90,33 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.view-project-btn {
+  @apply inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm mt-4 hover:underline;
+}
+
+.icon-skill {
+  @apply w-4 h-4 opacity-70;
+}
+
+.contact-form-input {
+  @apply bg-secondary/50 border border-border rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-primary;
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.skill-category {
+  @apply mb-6;
+}
+
+.skill-category-title {
+  @apply text-lg font-semibold mb-3 text-primary/80 border-l-2 border-primary pl-3;
+}
+
+.avatar-container {
+  @apply relative rounded-full overflow-hidden w-24 h-24 border-2 border-primary;
 }
